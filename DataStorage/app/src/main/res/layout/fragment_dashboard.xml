@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:paddingBottom="200dp"
+           >
+
+           <TextView
+               android:id="@+id/textView1"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:padding="5dp"
+               android:text="Đọc ghi file với external storage"
+               android:textSize="28sp"
+               android:textStyle="bold" />
+
+           <EditText
+               android:id="@+id/edit_text_display"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+
+               android:layout_marginTop="22dp"
+               android:minLines="5"
+               android:layout_margin="5dp">
+
+               <requestFocus />
+           </EditText>
+
+           <Button
+               android:id="@+id/btn_write"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Ghi file"
+               android:layout_gravity="start"
+               />
+
+           <Button
+               android:id="@+id/btn_read"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Đọc file"
+                />
+
+           <RadioGroup
+               android:id="@+id/radio_group"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               >
+               <RadioButton
+                   android:id="@+id/radio_external_file_dir"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:checked="true"
+                   android:text="getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)"/>
+               <RadioButton
+                   android:id="@+id/radio_external_store_public_dir"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)"/>
+               <RadioButton
+                   android:id="@+id/radio_external_storage"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="getExternalStorageDirectory"/>
+           </RadioGroup>
+
+           <RadioGroup
+               android:id="@+id/radio_group_permis"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               >
+               <RadioButton
+                   android:id="@+id/radio_no_permission"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:checked="true"
+                   android:text="NO write permission runtime"/>
+               <RadioButton
+                   android:id="@+id/radio_permission"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="write permission runtime"/>
+
+           </RadioGroup>
+
+
+           <TextView
+               android:id="@+id/text_view_path"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/radio_group_permis"
+               android:padding="5dp"
+               android:text=""
+               android:textStyle="bold"
+               android:textSize="28sp" />
+
+       </LinearLayout>
+   </ScrollView>
+
+
+
+</LinearLayout>

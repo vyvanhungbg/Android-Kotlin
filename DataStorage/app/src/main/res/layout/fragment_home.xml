@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:padding="5dp"
+            android:text="Đọc ghi file với internal storage"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_text_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="22dp"
+            android:minLines="5"
+            android:layout_margin="5dp">
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ghi file"
+            android:layout_alignTop="@+id/btn_read"
+            android:layout_alignEnd="@+id/edit_text_display" />
+
+        <Button
+            android:id="@+id/btn_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đọc file"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/edit_text_display" />
+
+
+        <TextView
+            android:id="@+id/text_view_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_write"
+            android:padding="5dp"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="28sp" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

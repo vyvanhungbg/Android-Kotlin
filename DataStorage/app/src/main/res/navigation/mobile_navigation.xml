@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_internal">
+
+    <fragment
+        android:id="@+id/navigation_internal"
+        android:name="com.atom.android.datastorage.ui.internal.HomeFragment"
+        android:label="@string/title_internal"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_external"
+        android:name="com.atom.android.datastorage.ui.external.DashboardFragment"
+        android:label="@string/title_external"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_shared_pref"
+        android:name="com.atom.android.datastorage.ui.sharepref.NotificationsFragment"
+        android:label="@string/title_shared_pref"
+        tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_sql"
+        android:name="com.atom.android.datastorage.ui.sql.SQLFragment"
+        android:label="@string/title_sql"
+        tools:layout="@layout/fragment_s_q_l" />
+</navigation>

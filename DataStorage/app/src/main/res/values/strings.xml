@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DataStorage</string>
+    <string name="title_internal">Internal</string>
+    <string name="title_external">External</string>
+    <string name="title_shared_pref">SharePref</string>
+    <string name="title_sql">SQLite</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
