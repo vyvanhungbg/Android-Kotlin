@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        app:entries="@array/title"
+        app:entryValues="@array/value"
+        app:defaultValue="app_internal"
+        app:key="records_output_location"
+        app:title="Lưu trữ tại"
+        app:useSimpleSummaryProvider="true" />
+
+    <SwitchPreferenceCompat
+
+        app:key="vibrate"
+        app:defaultValue="true"
+        app:title="Dark Mode"
+        app:summary="Hiển thị chế độ ban đêm"
+        app:singleLineTitle="true" />
+
+</androidx.preference.PreferenceScreen>

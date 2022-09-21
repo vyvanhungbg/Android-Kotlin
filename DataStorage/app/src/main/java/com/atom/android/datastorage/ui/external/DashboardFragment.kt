@@ -47,15 +47,14 @@ class DashboardFragment : Fragment() {
             //val folder = context?.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) //// scope storage external của app tạo ra thư mục external có thể nhìn thấy nhưng xóa app cũng mất
 
             if(permission){
-                if(binding.radioExternalStorage.isChecked){
-                    writeFile(Environment.getExternalStorageDirectory())
-                }else if(binding.radioExternalStorePublicDir.isChecked){
-                    writeFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS))
-                }else{
-                    writeFile(context?.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)!!)
-                }
-            }else{
                 requestPermission()
+            }
+            if(binding.radioExternalStorage.isChecked){
+                writeFile(Environment.getExternalStorageDirectory())
+            }else if(binding.radioExternalStorePublicDir.isChecked){
+                writeFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS))
+            }else{
+                writeFile(context?.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)!!)
             }
            // binding.editTextDisplay.text.clear()
 
@@ -64,6 +63,9 @@ class DashboardFragment : Fragment() {
         binding.btnRead.setOnClickListener(View.OnClickListener {
            // binding.editTextDisplay.text.clear()
             val permission: Boolean = binding.radioPermission.isChecked
+            if(permission){
+                requestPermission()
+            }
             if(binding.radioExternalStorage.isChecked){
                 readFile(Environment.getExternalStorageDirectory())
             }else if(binding.radioExternalStorePublicDir.isChecked){
@@ -145,14 +147,6 @@ class DashboardFragment : Fragment() {
     ) {
         when (requestCode) {
             111 -> if (grantResults[0] === PackageManager.PERMISSION_GRANTED) {
-                if(binding.radioExternalStorage.isChecked){
-                    writeFile(Environment.getExternalStorageDirectory())
-                }else if(binding.radioExternalStorePublicDir.isChecked){
-                    writeFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS))
-                }else{
-                    writeFile(context?.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)!!)
-                }
-            } else {
 
             }
         }

@@ -59,7 +59,10 @@ class DatabaseHelper(
         val contentValue = ContentValues()
         contentValue.put(SUBJECT, name)
         contentValue.put(DESC, desc)
-        database!!.insert(TABLE_NAME, null, contentValue)
+        database.apply {
+            insert(TABLE_NAME, null, contentValue)
+            database.close()
+        }
     }
 
     fun fetch(): Cursor? {
@@ -69,6 +72,7 @@ class DatabaseHelper(
         val cursor: Cursor? =
             database.query(TABLE_NAME, columns, null, null, null, null, null)
         cursor?.moveToFirst()
+        database.close()
         return cursor
     }
 
@@ -86,21 +90,20 @@ class DatabaseHelper(
         return list
     }
 
-    fun update(_id: Long, name: String?, desc: String?): Int {
+    fun update(_id: Long, name: String?, desc: String?) {
         val database =  writableDatabase
         val contentValues = ContentValues()
         contentValues.put(SUBJECT, name)
         contentValues.put(DESC, desc)
-        return database!!.update(
-           TABLE_NAME,
-            contentValues,
-            "$_ID = $_id",
-            null
-        )
+        database.apply { 
+            update(TABLE_NAME, contentValues, "$_ID = $_id", null)
+            database.close()
+        }
     }
 
     fun delete(_id: Long) {
         val database =  writableDatabase
         database.delete(TABLE_NAME, "$_ID=$_id", null)
+        database.close()
     }
 }

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.provider.DocumentsContract
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +52,8 @@ class HomeFragment : Fragment() {
             openFile(file.path)
         }
 
+        Log.e("getFile Dir", requireContext().filesDir.toString())
+
         return root
     }
 
@@ -57,18 +61,28 @@ class HomeFragment : Fragment() {
     //open file by path
 
     fun openFile(path:String){
-        val intent = Intent(Intent.ACTION_PICK)
+//        val intent = Intent(Intent.ACTION_PICK)
+//
+//        intent.setDataAndType(Uri.parse(path), "file/*")
+//
+//        try {
+//            startActivityForResult(Intent.createChooser(intent, "Open folder"), 123)
+//        }catch (ex:Exception){
+//            Toast.makeText(
+//                context, "No package manager support open file!",
+//                Toast.LENGTH_SHORT
+//            ).show()
+//        }
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "application/pdf"
 
-        intent.setDataAndType(Uri.parse(path), "file/*")
-
-        try {
-            startActivityForResult(Intent.createChooser(intent, "Open folder"), 123)
-        }catch (ex:Exception){
-            Toast.makeText(
-                context, "No package manager support open file!",
-                Toast.LENGTH_SHORT
-            ).show()
+            // Optionally, specify a URI for the file that should appear in the
+            // system file picker when it loads.
+            putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(path))
         }
+
+        startActivityForResult(intent, 1)
 
     }
 
@@ -76,7 +90,7 @@ class HomeFragment : Fragment() {
     fun writeFile() {
 
         try {
-            val folder = context?.filesDir
+            val folder = context?.filesDir  ///data/user/0/com.atom.android.datastorage/files
             val file: File = File(folder, fileName)
             val fileOutputStream : FileOutputStream = FileOutputStream(file)
             val outputStreamWriter = OutputStreamWriter(fileOutputStream)
