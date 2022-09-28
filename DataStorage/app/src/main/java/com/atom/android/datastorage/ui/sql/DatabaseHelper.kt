@@ -81,12 +81,19 @@ class DatabaseHelper(
         val list:ArrayList<String> = ArrayList<String>()
         val c: Cursor? = fetch()
 
-        while (c != null && c.moveToNext()){
-            val id = c.getString(c.getColumnIndex(_ID))
-            val sub = c.getString(c.getColumnIndex(SUBJECT))
-            val dir = c.getString(c.getColumnIndex(DESC))
-            list.add(id + " | "+ sub + "|"+ dir)
+        c?.let {
+            c.moveToFirst();
+            do{
+                val id = c.getString(c.getColumnIndex(_ID))
+                val sub = c.getString(c.getColumnIndex(SUBJECT))
+                val dir = c.getString(c.getColumnIndex(DESC))
+                list.add(id + " | "+ sub + "|"+ dir)
+            }
+            while (c.moveToNext())
         }
+
+
+
         return list
     }
 
