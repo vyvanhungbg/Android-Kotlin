@@ -66,7 +66,7 @@ class DatabaseHelper(
     }
 
     fun fetch(): Cursor? {
-        val database =  writableDatabase
+        val database =  readableDatabase
         val columns =
             arrayOf<String>(_ID, SUBJECT,DESC)
         val cursor: Cursor? =
@@ -80,18 +80,21 @@ class DatabaseHelper(
     fun getAll(): ArrayList<String> {
         val list:ArrayList<String> = ArrayList<String>()
         val c: Cursor? = fetch()
-
         c?.let {
-            c.moveToFirst();
-            do{
-                val id = c.getString(c.getColumnIndex(_ID))
-                val sub = c.getString(c.getColumnIndex(SUBJECT))
-                val dir = c.getString(c.getColumnIndex(DESC))
-                list.add(id + " | "+ sub + "|"+ dir)
-            }
-            while (c.moveToNext())
-        }
 
+           if(c.count>0){
+               do{
+                   val id = c.getInt(c.getColumnIndex(_ID))
+                   val sub = c.getString(c.getColumnIndex(SUBJECT))
+                   val dir = c.getString(c.getColumnIndex(DESC))
+
+                   list.add("$id | $sub | $dir")
+               }
+               while (c.moveToNext())
+
+           }
+            c.close()
+        }
 
 
         return list

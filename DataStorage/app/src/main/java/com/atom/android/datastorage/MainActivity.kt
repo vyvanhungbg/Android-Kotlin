@@ -1,6 +1,10 @@
 package com.atom.android.datastorage
 
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
+import androidx.annotation.RequiresApi
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -32,5 +36,17 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        log()
+    }
+
+
+    fun log(){
+        System.err.println("getFileDir() : $filesDir")
+        System.err.println("getExternalFilesDir(null) : " + getExternalFilesDir(null).toString())
+        System.err.println("getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) : " + getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).toString())
+
+        System.err.println("Environment.getExternalStorageDirectory() : " + Environment.getExternalStorageDirectory().toString())
+//        System.err.println("Environment.getExternalStoragePublicDirectory(null) : " + Environment.getExternalStoragePublicDirectory(null).toString())
+        System.err.println("Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC) : " + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString())
     }
 }

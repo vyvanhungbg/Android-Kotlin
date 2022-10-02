@@ -36,15 +36,21 @@ class RoomFragment : Fragment() {
         save.setOnClickListener{
             val id = editId.text.toString().toInt()
             val name = editName.text.toString()
-            RomDB.getInstance(requireContext())?.studentDao()?.insertAll(Student(id, name))
-            Toast.makeText(context, "Lưu thành công", Toast.LENGTH_SHORT).show()
+            val student: Student? = RomDB.getInstance(requireContext())?.studentDao()?.getById(id)
+            if(student == null){
+                RomDB.getInstance(requireContext())?.studentDao()?.insertAll(Student(id, name))
+                Toast.makeText(context, "Lưu thành công", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, "Vui lòng chọn khóa chính khác", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         get.setOnClickListener{
             val id = editId.text.toString().toInt()
             val student: Student? = RomDB.getInstance(requireContext())?.studentDao()?.getById(id)
             if(student == null)
-                editName.setText("Không tìm thấy với id $id")
+                editName.setHint("Không tìm thấy với id $id")
             else
             {
                 editName.setText(student.name?.toString())
@@ -57,7 +63,7 @@ class RoomFragment : Fragment() {
             val id = editId.text.toString().toInt()
             val student: Student? = RomDB.getInstance(requireContext())?.studentDao()?.getById(id)
             if(student == null)
-                editName.setText("Không tìm thấy với id $id")
+                editName.setHint("Không tìm thấy với id $id")
             else
             {
                 RomDB.getInstance(requireContext())?.studentDao()?.delete(id)

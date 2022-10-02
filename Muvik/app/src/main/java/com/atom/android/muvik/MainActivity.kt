@@ -81,13 +81,13 @@ class MainActivity : AppCompatActivity() {
         )
 
 
-        binding.bottomsheetText.setOnClickListener {
+      /*  binding.bottomsheetText.setOnClickListener {
             if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED)
             } else {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED)
             }
-        }
+        }*/
 
 
 

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.facebook.stetho.inspector.protocol.module.Database
 
 
-@androidx.room.Database(entities = [Student::class], version = 1)
+@androidx.room.Database(entities = [Student::class], version = 1, exportSchema = false)
 abstract class RomDB : RoomDatabase() {
     abstract fun studentDao(): StudentDAO?
 

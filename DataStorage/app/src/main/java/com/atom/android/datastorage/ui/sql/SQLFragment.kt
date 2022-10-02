@@ -44,7 +44,6 @@ class SQLFragment : Fragment() {
         val root: View = binding.root
 
         val databaseHelper = DatabaseHelper(context)
-
         list = databaseHelper.getAll()
         binding.listView.emptyView = binding.empty
         val adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_dropdown_item_1line, list)
